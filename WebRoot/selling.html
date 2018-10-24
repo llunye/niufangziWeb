@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>牛房子-在售趋势</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="niufangzi,牛房子,房屋信息,报价趋势">
+	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="./css/sList.css"/>
+	
+    <script src="./js/echarts.min.js"></script>
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./js/header.js"></script>
+	<script src="./js/selling.js"></script>
+  </head>
+  
+  
+  <body>
+    <div id="container_header"></div>
+    
+    <div id="container_period" style="height:40px;width:90%;padding:.5em 0;">
+    	统计周期：
+		<select name='period' id='select_period' style='height:30px;width:70px;margin-left:5px'>
+			<option value='0' selected='selected'>天</option>
+			<option value='1'>周</option>
+			<option value='2'>月</option>
+			<option value='3'>季度</option>
+		</select>
+    </div>
+    
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="container_sellingCount" style="height:200px;width:90%;padding:.5em 0;"></div>
+	<div id="container_sellingPrice" style="height:200px;width:90%;padding:.5em 0;"></div>
+	<div id="container_footer" style="height:30px;width:90%;padding:.5em 0;"></div>
+
+    <script type="text/javascript">
+       // 基于准备好的dom，初始化echarts实例
+		var dom_sellingCount = document.getElementById("container_sellingCount");
+		var chart_sellingCount = echarts.init(dom_sellingCount);
+		
+		var dom_sellingPrice = document.getElementById("container_sellingPrice");
+		var chart_sellingPrice = echarts.init(dom_sellingPrice);
+		
+		var app = {};
+		option = null;
+		option = {
+			tooltip: {
+				trigger: 'axis',
+				position: function (pt) {
+					return [pt[0], '10%'];
+				}
+			},
+			
+			toolbox: {
+				feature: {
+			 		saveAsImage: {type: 'jpg'}
+			 	},
+			 	right: 30
+			},
+			xAxis : [
+				{
+					type: 'category',
+					boundaryGap: false,
+					data: []  //空数据
+				}
+			],
+			yAxis : [
+				{
+					type: 'value',
+					boundaryGap: [0, '1%']
+				}
+			],
+			dataZoom: [
+				{
+					start: 80,
+					end: 100,
+					handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+					handleSize: '100%',
+					handleStyle: {
+						color: '#fff',
+						shadowBlur: 3,
+						shadowColor: 'rgba(0, 0, 0, 0.6)',
+						shadowOffsetX: 2,
+						shadowOffsetY: 2
+					}
+				}
+			],
+			series : [
+				{
+					name: '挂牌在售信息',
+					type: 'line',
+					smooth: true,
+					symbol: 'emptyCircle',
+					sampling: 'average',
+					itemStyle: {
+						normal: {
+							color: 'rgb(255, 70, 131)'
+						}
+					},
+					/*
+					areaStyle: {
+						normal: {
+							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: 'rgb(255, 158, 68)'
+								}, {
+								offset: 1,
+								color: 'rgb(255, 70, 131)'
+							}])
+						}
+					},
+					*/
+					data: [] //空数据
+			 	}
+			]
+		};
+		if (option && typeof option === "object") {
+			chart_sellingCount.setOption(option, true);
+			chart_sellingPrice.setOption(option, true);
+		}
+    </script>
+    
+  </body>
+</html>

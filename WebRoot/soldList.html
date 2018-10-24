@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="pc">
+    <meta http-equiv="keywords" content="niufangzi,牛房子,成交房屋,价格信息">
+    <title>在售房屋列表</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/sList.css"/>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/pagination.min.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./js/header.js"></script>
+	<script src="./js/soldList.js"></script>
+	
+	<script>
+	function NumOnly(obj){
+		obj.value = obj.value.replace(/\D/gi,"");
+		if (obj.value.length > 3) {
+			obj.value = obj.value.substring(0,4);
+		}
+	}
+	</script>
+	
+  </head>
+  
+  <body>
+    <div id="container_header"></div>
+
+     <div class="menu" style='margin-left:1px;'>
+       <div class="menuLeft">
+           <ul class="typeList">
+             <li>按区域
+              <select name='area' id='select_area' style='height:30px;width:70px;margin-left:5px'>
+				<option value='' selected='selected'>所有</option>
+			  </select>
+             </li>
+             <li>按总价<span>(万）</span>
+                 <input type="text" id="trans_price_min" onkeyup="NumOnly(this)" style='height:25px;width:50px;'/><span>-</span>
+                 <input type="text" id="trans_price_max" onkeyup="NumOnly(this)" style='height:25px;width:50px;'/></li>
+             <li>按面积<span>(平）</span>
+                 <input type="text" id="trans_square_min" onkeyup="NumOnly(this)" style='height:25px;width:50px;'/><span>-</span>
+             	  <input type="text" id="trans_square_max" onkeyup="NumOnly(this)" style='height:25px;width:50px;'/></li>
+             <li>按房型
+              <select name='room' id='select_room' style='height:30px;width:70px;margin-left:5px'>
+				<option value='' selected='selected'>所有</option>
+				<option value='1室'>一室</option>
+				<option value='2室'>二室</option>
+				<option value='3室'>三室</option>
+				<option value='4室'>四室</option>
+			  </select>
+             </li>
+             <li  class="selected"><a href="#" onclick="FilterHouse()">查询</a></li>
+           </ul>
+       </div>
+     </div>
+
+
+	<div style='margin-left:200px;margin-top:20px;font-size:18px;'>
+		共找到<span id="totalCount" style='color:#00ae66'>0</span>套
+		<span id="totalCount" style='color:#00ae66'>成交</span>二手房源
+	</div>
+
+    <div class="content">
+    	<div class="leftContent" id="leftContent">
+    		<div class="orderFilter">
+    			<div class="orderTag">
+    				<ul id="ulOrderField">
+						<li class='selected'><h3><a href="#" onclick="SetOrderField(0)">默认排序</a></h3></li>
+						<li><h3><a href="#" onclick="SetOrderField(1)">最新</a></h3></li>
+						<li><h3><a href="#" onclick="SetOrderField(2)">总价</a></h3></li>
+						<li><h3><a href="#" onclick="SetOrderField(3)">面积</a></h3></li>
+						<li><h3><a href="#" onclick="SetOrderField(4)">带看较多</a></h3></li>
+					</ul>
+    			</div>
+    		</div>
+    		<ul id="soldList" class="sellListContent">
+	 			<!-- 列表详情 -->           
+	        </ul>
+	        <div id="container_pagination" style="height:40px;width:90%;padding:.5em 0;"></div>
+    	</div>
+    </div>
+    
+    <div id="container_footer" style="height:30px;width:90%;padding:.5em 0;"></div>
+  </body>                
+</html>

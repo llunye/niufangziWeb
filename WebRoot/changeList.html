@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>牛房子-调价信息</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="niufangzi,牛房子,房屋信息,调价记录">
+	<meta http-equiv="description" content="niuangzi">
+	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="./css/sList.css"/>  
+	<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css"/>
+
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/jquery-ui.js"></script>
+	<script src="./js/pagination.min.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./js/header.js"></script>
+	<script src="./js/changeList.js"></script>
+  </head>
+  
+
+<style>
+.ltable td {padding:5px;text-align: center;}
+.ltable th {background-color: #cccccc;}
+</style> 
+  
+  <body>
+    <!--  <embed type="text/html" src="./header.html" width="90%" height="60px" />  -->
+  
+    <div id="container_header"></div>
+  
+  	<div id="container_filter" style="float:left;height:40px;margin-left:10px">区域：
+  		<select name='area' id='select_area' style='height:28px;width:70px;margin-top:14px;margin-left:1px'>
+			<option value='' selected='selected'>所有</option>
+		</select>
+    </div>
+
+  
+	<div id="container_pagination" style="float:left;height:40px;width:80%;margin-left:50px;padding:.5em 0;"></div>
+	<table cellspacing="1" cellpadding="5" border="0" width="90%" bgcolor="gray"  class="ltable"> 
+		<thead>
+		<tr> 
+			<th width="8%">调价日期</th> 
+			<th width="10%">城区</th>
+			<th width="13%">街道</th> 
+			<th width="18%">小区</th>
+			<th width="6%">旧价格</th> 
+			<th width="6%">新价格</th>
+			<th width="7%">调价幅度</th>
+			<th width="6%">建面</th> 
+			<th width="10%">户型</th>
+			<th width="8%">挂牌日期</th>
+			<th width="8%">调价历史</th>  
+		</tr> 	
+		</thead> 
+		<tbody id="changeList">
+        </tbody>
+	</table> 
+	
+  	<div id="historyDialog" title="调价历史">
+	<table id="historyTable" cellspacing="1" cellpadding="5" border="0" width="90%" bgcolor="gray" class="ltable"> 
+		<thead> 
+		<tr> 
+			<th width="100px">调价日期</th> 
+			<th width="60px">旧价格</th> 
+			<th width="60px">新价格</th>
+			<th width="80px">调价幅度</th> 
+		</tr> 
+		</thead> 
+		<tbody id="changeHistoryList">
+		</tbody>
+	</table> 
+  	</div>
+
+	<div id="container_footer" style="height:30px;width:90%;padding:.5em 0;"></div>
+  </body>
+</html>
